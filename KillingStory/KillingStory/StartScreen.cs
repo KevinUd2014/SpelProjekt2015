@@ -7,10 +7,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace KillingStory
 {
-    class StartScreen : Camera //ärver från kameraklassen
+    public class StartScreen : Camera //ärver från kameraklassen
     {
-        Texture2D image;
-        string path;
+        public Texture2D image;
+        public string path;
 
         public override void LoadContent()
         {

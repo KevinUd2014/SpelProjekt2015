@@ -12,9 +12,14 @@ namespace KillingStory
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        //mouse
+        private Vector2 cursorPos;
+        private MouseState oldMouseState;
+
         public MasterController()
         {
             graphics = new GraphicsDeviceManager(this);
+            IsMouseVisible = true;
             Content.RootDirectory = "Content";
         }
 
@@ -65,6 +70,17 @@ namespace KillingStory
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+
+            MouseState newMouseState = Mouse.GetState();
+
+            cursorPos = new Vector2(oldMouseState.X, oldMouseState.Y);
+
+            if (newMouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released)
+            {
+                Vector2 vec = new Vector2(newMouseState.X, newMouseState.Y);
+            }
+            oldMouseState = newMouseState;
+
             ScreenManager.Instance.Update(gameTime);
             // TODO: Add your update logic here
 
